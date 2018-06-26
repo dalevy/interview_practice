@@ -12,7 +12,7 @@ public class FindIslands {
 		int count = 0;
 		map = matrix;
 		
-		//visited parts of the map
+		//visited parts of the map - as with standard dfs, we don't want to revisit parts of the map we have been to
 		visited = new boolean[map.length][map.length];
 		
 		//each dfs call in this loop will mark a part(s) of the map as visited or not visited
@@ -21,7 +21,7 @@ public class FindIslands {
 		{
 			for(int c= 0; c < matrix.length; c++)
 			{
-				//check if the coordinate has been visited
+				//check if the coordinate has been visited, is within the array bounds
 				if(!visited[r][c] && isValid(r,c))
 				{
 					System.out.println(" DFS("+r+","+c+")");
