@@ -48,23 +48,6 @@ public abstract class SimpleGraphBase {
 		System.out.println();
 	}
 	
-
-	
-	public static void printMatrix(double[][] matrix)
-	{
-		for(int r = 0; r < matrix.length; r++)
-		{
-			for(int c = 0; c < matrix[0].length; c++)
-			{
-				double val = matrix[r][c];
-				if(c+1 != matrix.length)
-					System.out.print(val+",");
-				else
-					System.out.print(val);
-			}
-			System.out.println();
-		}
-	}
 	
 	public static void printMatrix(String[][] matrix)
 	{

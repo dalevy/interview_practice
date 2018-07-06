@@ -3,6 +3,10 @@ package com.interviews.utils;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Sedgewick Coursera Princeton Algorithms and Datastructures II
+ *
+ */
 public class BreadthFirstSearch {
 
 	private boolean[] visited;
