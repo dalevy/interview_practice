@@ -31,10 +31,23 @@ public class DFSFindX {
 		
 		boolean found = false;
 		
+		/*
 		for(int row = 0; row < maze.length && !found; row++)
 			for(int col = 0; col < maze.length && !found; col++)
 				if(!visited[row][col] && isValid(row,col,maze))
 					found = dfs(row,col,x,maze,visited,path);
+					*/
+		for(int index = 0; index < MAX_N; index++)
+		{
+			//neighbor of x,y -- nx, ny
+			int nx = 0 + searchX[index];
+			int ny = 0 + searchY[index];
+			
+			if(isValid(nx,ny, maze) && !visited[nx][ny])
+			{
+				dfs(nx,ny,x,maze,visited,path);
+			}
+		}
 						
 				
 		
