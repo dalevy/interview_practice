@@ -10,22 +10,37 @@ public class CTCI extends SolutionUtils {
 	 * @return
 	 */
 	public static boolean isUnique(String s)
-	{
-		if(s.length() <= 1) return true;
+	{		
+		boolean isUnique = true;
 		
-		Set<Character> seen = new HashSet<Character>();
+		long vector0 = 0;
+		long vector1 = 0;
 		
-		for(int i = 0; i < s.length(); i++)
+		
+		for(int index = 0; index < s.length(); index++)
 		{
-			Character c = s.charAt(i);
+			char c = s.charAt(index);
+			int position = c - ' ';//c - 32, chars will go from space(32) to ~(126)
 			
-			if(seen.contains(c))
-				return false;
-			else
-				seen.add(c);
+			//determine vector
+			int vector = position / 63; //size of bucket -1
+			
+			if(vector == 0) {
+				if((vector0 & 1<<position) == 0)
+					vector0 |= 1<<position;
+				else
+					return false;
+			}else {
+				if((vector1 & 1<<position) == 0)
+					vector1 |= 1<<position;
+				else
+					return false;
+			}
+					
+				
 		}
 		
-		return true;
+		return isUnique;
 	}
 	
 	/**
@@ -112,29 +127,19 @@ public class CTCI extends SolutionUtils {
 		}
 		
 		
+		//fill in all the rows that marked
 		for(int row = 1; row < matrix.length; row++)
-		{
 			if(matrix[row][0] == 0)
-			{
 				for(int col = 0; col < matrix[0].length; col++)
 					matrix[row][col] = 0;
-			}
-		}
+
 		
-		
+		//fill in all the columns that were marked
 		for(int col = 1; col < matrix[0].length; col++)
-		{
 			if(matrix[0][col] == 0)
-			{
-				//System.out.println("Is "+0+","+col+" 0?");
 				for(int row = 0; row < matrix.length; row++)
-				{
 					matrix[row][col] = 0;
-					//System.out.println("Setting "+row+","+col+" to 0");
-				}
-			}
-		}
-		
+
 		
 		//if rowZero0 or colZero0 then zero out the corresponding top and left most row/col
 		if(isRowZero0) for(int col = 0; col < matrix[0].length; col ++) matrix[0][col] = 0;
