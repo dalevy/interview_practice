@@ -23,7 +23,7 @@ public class CTCI extends SolutionUtils {
 			int position = c - ' ';//c - 32, chars will go from space(32) to ~(126)
 			
 			//determine vector
-			int vector = position / 63; //size of bucket -1
+			int vector = position / 64; //size of bucket -1
 			
 			if(vector == 0) {
 				if((vector0 & 1<<position) == 0)
