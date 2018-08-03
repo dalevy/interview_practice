@@ -1,4 +1,4 @@
-package com.interviews.leetcode;
+package com.interviews.practice.leetcode;
 
 import com.interviews.practice.ctci.SolutionUtils;
 
